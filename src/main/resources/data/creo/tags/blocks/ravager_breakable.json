@@ -15,7 +15,7 @@
     "minecraft:grass",
     "minecraft:tall_grass",
     "minecraft:fern",
-    "minecraft:tall_fern",
+    "minecraft:large_fern",
     "minecraft:dead_bush",
     "minecraft:chorus_plant",
     "minecraft:chorus_flower",
@@ -23,7 +23,7 @@
     "minecraft:bamboo_sapling",
     "minecraft:sweet_berry_bush",
     "minecraft:turtle_egg",
-    "minecraft:vines",
+    "minecraft:vine",
     "minecraft:lily_pad"
   ]
 }

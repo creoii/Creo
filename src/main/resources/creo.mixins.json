@@ -4,14 +4,17 @@
   "package": "creoii.creo.core.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "EnderChestBlockEntityMixin",
     "HopperBlockEntityMixin",
     "LivingEntityMixin",
-    "RavagerEntityMixin"
+    "LootableContainerBlockEntityMixin",
+    "WorldMixin"
   ],
   "client": [
     "ClientPlayerInteractionManagerMixin"
   ],
   "server": [
+    "ServerPlayerInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
