@@ -9,5 +9,6 @@ import net.minecraft.util.Identifier;
 public class Tags {
     public static class Blocks {
         public static final Tag<Block> RAVAGER_BREAKABLE = TagRegistry.block(new Identifier(Creo.MOD_ID, "ravager_breakable"));
+        public static final Tag<Block> BLOCKS_VEX = TagRegistry.block(new Identifier(Creo.MOD_ID, "blocks_vex"));
     }
 }

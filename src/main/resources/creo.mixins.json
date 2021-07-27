@@ -4,13 +4,13 @@
   "package": "creoii.creo.core.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "LivingEntityMixin",
     "RavagerEntityMixin"
   ],
   "client": [
     "ClientPlayerInteractionManagerMixin"
   ],
   "server": [
-    "ServerPlayerInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
