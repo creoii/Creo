@@ -6,7 +6,6 @@ import net.minecraft.sound.BiomeAdditionsSound;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.*;
@@ -41,10 +40,6 @@ public abstract class AbstractBiome {
                 .build();
 
         this.key = RegistryKey.of(Registry.BIOME_KEY, this.name);
-    }
-
-    public static void register(AbstractBiome biome) {
-        Registry.register(BuiltinRegistries.BIOME, biome.getKey().getValue(), biome.getBiome());
     }
 
     public Identifier getName() {
