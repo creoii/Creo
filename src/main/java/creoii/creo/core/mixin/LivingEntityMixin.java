@@ -56,10 +56,12 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "isInsideWall", at = @At("HEAD"), cancellable = true)
     private void creo$vexInsideWall(CallbackInfoReturnable<Boolean> cir) {
+        /*
         if (this.getType() == EntityType.VEX) {
             float f = this.getType().getDimensions().width * 0.8F;
             Box box = Box.of(this.getEyePos(), f, 1.0E-6D, f);
             cir.setReturnValue(this.world.getBlockCollisions(this, box, (state, pos) -> state.isIn(Tags.Blocks.BLOCKS_VEX)).findAny().isPresent());
         }
+         */
     }
 }

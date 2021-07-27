@@ -13,8 +13,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class RavagerEntityMixin {
     @Redirect(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;breakBlock(Lnet/minecraft/util/math/BlockPos;ZLnet/minecraft/entity/Entity;)Z"))
     public boolean creo$ravagerBreakables(World world, BlockPos pos, boolean drop, Entity breakingEntity) {
-        if (world.getBlockState(pos).isIn(Tags.Blocks.RAVAGER_BREAKABLE)) {
-            return world.breakBlock(pos, drop, breakingEntity);
-        }  else return false;
+        return world.getBlockState(pos).isIn(Tags.Blocks.RAVAGER_BREAKABLE) && world.breakBlock(pos, drop, breakingEntity);
     }
 }
