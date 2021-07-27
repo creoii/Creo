@@ -23,6 +23,7 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
 
     public BoatEntity(EntityType<? extends net.minecraft.entity.vehicle.BoatEntity> entityType, World world) {
         super(entityType, world);
+        BOATS.put("default", new Boat("default", Blocks.OAK_PLANKS, Items.OAK_BOAT));
     }
 
     public BoatEntity(World world, double x, double y, double z) {
@@ -31,6 +32,7 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
         this.prevX = x;
         this.prevY = y;
         this.prevZ = z;
+        BOATS.put("default", new Boat("default", Blocks.OAK_PLANKS, Items.OAK_BOAT));
     }
 
     @Override
