@@ -1,38 +1,37 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "creo",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Creo",
+  "description": "Library Mod",
   "authors": [
-    "Me!"
+    "CreoII"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/creoii/Creo"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/creo/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "creoii.creo.core.Creo"
+    ],
+    "client": [
+      "creoii.creo.core.Creo"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "creo.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.17.x",
     "java": ">=16"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
