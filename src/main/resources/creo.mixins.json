@@ -13,7 +13,8 @@
     "WorldMixin"
   ],
   "client": [
-    "ClientPlayerInteractionManagerMixin"
+    "ClientPlayerInteractionManagerMixin",
+    "LivingEntityRendererMixin"
   ],
   "server": [
     "ServerPlayerInteractionManagerMixin"
