@@ -10,6 +10,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,6 +27,9 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public EntityDimensions getDimensions(EntityPose pose) { return null; }
     @Shadow @Nullable public EntityAttributeInstance getAttributeInstance(EntityAttribute attribute) { return null; }
     @Shadow public boolean hasStatusEffect(StatusEffect effect) { return false; }
+    @Shadow public float getHealth() { return 0.0F; }
+    @Shadow public float getMaxHealth() { return 0.0F; }
+    @Shadow public void heal(float amount) { }
 
     private static final UUID SLOW_FALLING_ID = UUID.fromString("A5B6CF2A-2F7C-31EF-9022-7C3E7D5E6ABA");
     private static final EntityAttributeModifier SLOW_FALLING = new EntityAttributeModifier(SLOW_FALLING_ID, "Slow falling acceleration reduction", -0.07, EntityAttributeModifier.Operation.ADDITION);
@@ -37,7 +41,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "createLivingAttributes", at = @At("RETURN"))
     private static void creo$createNewAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.getReturnValue().add(AttributeRegistry.GENERIC_GRAVITY).add(AttributeRegistry.GENERIC_SWIM_SPEED).add(AttributeRegistry.GENERIC_REACH_DISTANCE);
+        cir.getReturnValue().add(AttributeRegistry.GENERIC_GRAVITY).add(AttributeRegistry.GENERIC_SWIM_SPEED).add(AttributeRegistry.GENERIC_REACH_DISTANCE).add(AttributeRegistry.GENERIC_NATURAL_REGENERATION);
     }
 
     @Inject(method = "knockDownwards", at = @At("HEAD"), cancellable = true)
@@ -73,6 +77,16 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;", shift = At.Shift.BEFORE))
     private void creo$removeSlowFallingModifier(Vec3d movementInput, CallbackInfo ci) {
         if (gravity.hasModifier(SLOW_FALLING)) gravity.removeModifier(SLOW_FALLING);
+    }
+
+    @Inject(method = "tickMovement", at = @At("HEAD"))
+    private void creo$applyNaturalRegeneration(CallbackInfo ci) {
+        float amount = (float) this.getAttributeValue(AttributeRegistry.GENERIC_NATURAL_REGENERATION);
+        if (this.world.getGameRules().getBoolean(GameRules.NATURAL_REGENERATION) && amount > 0.0F) {
+            if (this.getHealth() < this.getMaxHealth() && this.age % 20 == 0) {
+                this.heal(amount);
+            }
+        }
     }
 
     @Inject(method = "isInsideWall", at = @At("HEAD"), cancellable = true)

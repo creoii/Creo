@@ -22,7 +22,7 @@ import java.util.Random;
 public class AbstractBlockMixin {
     @Inject(method = "scheduledTick", at = @At("HEAD"))
     private void creo$affectedByGravityTick(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
-        if (state.isIn(BlockTags.AFFECTED_BY_GRAVITY)) {
+        if (state.isIn(BlockTags.AFFECTED_BY_GRAVITY) && !(state.getBlock() instanceof FallingBlock)) {
             if (FallingBlock.canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= world.getBottomY()) {
                 FallingBlockEntity fallingBlockEntity = new FallingBlockEntity(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, world.getBlockState(pos));
                 world.spawnEntity(fallingBlockEntity);
@@ -32,7 +32,7 @@ public class AbstractBlockMixin {
 
     @Inject(method = "getStateForNeighborUpdate", at = @At("HEAD"), cancellable = true)
     private void creo$affectedByGravityNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-        if (state.isIn(BlockTags.AFFECTED_BY_GRAVITY)) {
+        if (state.isIn(BlockTags.AFFECTED_BY_GRAVITY) && !(state.getBlock() instanceof FallingBlock)) {
             world.getBlockTickScheduler().schedule(pos, state.getBlock(), 2);
             cir.setReturnValue(state.getStateForNeighborUpdate(direction, neighborState, world, pos, neighborPos));
         }
@@ -40,7 +40,7 @@ public class AbstractBlockMixin {
 
     @Inject(method = "onBlockAdded", at = @At("HEAD"))
     private void creo$affectedByGravityAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify, CallbackInfo ci) {
-        if (state.isIn(BlockTags.AFFECTED_BY_GRAVITY)) {
+        if (state.isIn(BlockTags.AFFECTED_BY_GRAVITY) && !(state.getBlock() instanceof FallingBlock)) {
             world.getBlockTickScheduler().schedule(pos, state.getBlock(), 2);
         }
     }
