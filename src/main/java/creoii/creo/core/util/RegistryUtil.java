@@ -12,7 +12,7 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 
 public class RegistryUtil {
-    private static <B extends Block> Block createBlock(Identifier id, B block, ItemGroup group) {
+    public static <B extends Block> Block createBlock(Identifier id, B block, ItemGroup group) {
         Registry.register(Registry.BLOCK, id, block);
         if (group != null) Registry.register(Registry.ITEM, id, new BlockItem(block, new Item.Settings().group(group)));
         return block;

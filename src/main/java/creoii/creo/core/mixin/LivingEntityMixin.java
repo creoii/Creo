@@ -14,10 +14,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -27,10 +24,8 @@ import java.util.UUID;
 public abstract class LivingEntityMixin extends Entity {
     @Shadow public double getAttributeValue(EntityAttribute attribute) { return 0.0D; }
     @Shadow public EntityDimensions getDimensions(EntityPose pose) { return null; }
-
-    @Shadow @Nullable public abstract EntityAttributeInstance getAttributeInstance(EntityAttribute attribute);
-
-    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+    @Shadow @Nullable public EntityAttributeInstance getAttributeInstance(EntityAttribute attribute) { return null; }
+    @Shadow public boolean hasStatusEffect(StatusEffect effect) { return false; }
 
     private static final UUID SLOW_FALLING_ID = UUID.fromString("A5B6CF2A-2F7C-31EF-9022-7C3E7D5E6ABA");
     private static final EntityAttributeModifier SLOW_FALLING = new EntityAttributeModifier(SLOW_FALLING_ID, "Slow falling acceleration reduction", -0.07, EntityAttributeModifier.Operation.ADDITION);
