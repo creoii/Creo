@@ -1,7 +1,6 @@
 {
   "values": [
-    "minecraft:sand",
-    "minecraft:red_sand",
+    "#minecraft:sand",
     "minecraft:gravel",
     "minecraft:brown_concrete_powder",
     "minecraft:red_concrete_powder",
