@@ -4,6 +4,7 @@
   "package": "creoii.creo.core.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "AbstractBlockMixin",
     "AbstractMinecartEntityMixin",
     "EnderChestBlockEntityMixin",
     "HopperBlockEntityMixin",
