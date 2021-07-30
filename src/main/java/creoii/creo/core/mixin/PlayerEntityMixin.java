@@ -19,9 +19,6 @@ public class PlayerEntityMixin {
         cir.getReturnValue().add(AttributeRegistry.GENERIC_NATURAL_REGENERATION, 1.0F);
     }
 
-    /**
-     * TODO: You should be able to hit the block
-     */
     @Inject(method = "isBlockBreakingRestricted", at = @At("HEAD"), cancellable = true)
     private void creo$playerImmuneBlocks(World world, BlockPos pos, GameMode gameMode, CallbackInfoReturnable<Boolean> cir) {
         if (world.getBlockState(pos).isIn(BlockTags.PLAYER_IMMUNE)) cir.setReturnValue(true);
