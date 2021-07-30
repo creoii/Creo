@@ -2,17 +2,26 @@ package creoii.creo.core.mixin;
 
 import creoii.creo.core.registry.AttributeRegistry;
 import creoii.creo.core.util.BlockTags;
+import creoii.creo.core.util.EntityTypeTags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.mob.ZombieVillagerEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -97,6 +106,28 @@ public abstract class LivingEntityMixin extends Entity {
         if (this.getType() == EntityType.VEX) {
             float f = this.getType().getDimensions().width * 0.8F;
             cir.setReturnValue(this.world.getBlockCollisions(this, Box.of(this.getEyePos(), f, 1.0E-6D, f), (state, pos) -> state.isIn(BlockTags.BLOCKS_VEX)).findAny().isPresent());
+        }
+    }
+
+    @Override
+    public void onKilledOther(ServerWorld world, LivingEntity other) {
+        super.onKilledOther(world, other);
+        if (this.getType().isIn(EntityTypeTags.ZOMBIES)) {
+            if ((world.getDifficulty() == Difficulty.NORMAL || world.getDifficulty() == Difficulty.HARD) && other instanceof VillagerEntity villagerEntity) {
+                if (world.getDifficulty() != Difficulty.HARD && this.random.nextBoolean()) {
+                    return;
+                }
+
+                ZombieVillagerEntity zombieVillagerEntity = villagerEntity.convertTo(EntityType.ZOMBIE_VILLAGER, false);
+                zombieVillagerEntity.initialize(world, world.getLocalDifficulty(zombieVillagerEntity.getBlockPos()), SpawnReason.CONVERSION, new ZombieEntity.ZombieData(false, true), null);
+                zombieVillagerEntity.setVillagerData(villagerEntity.getVillagerData());
+                zombieVillagerEntity.setGossipData(villagerEntity.getGossip().serialize(NbtOps.INSTANCE).getValue());
+                zombieVillagerEntity.setOfferData(villagerEntity.getOffers().toNbt());
+                zombieVillagerEntity.setXp(villagerEntity.getExperience());
+                if (!this.isSilent()) {
+                    world.syncWorldEvent(null, 1026, this.getBlockPos(), 0);
+                }
+            }
         }
     }
 }
