@@ -3,6 +3,8 @@ package creoii.creo.core.util;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
@@ -33,6 +35,10 @@ public class WorldGenUtil {
         }
 
         return positions;
+    }
+
+    public static Biome getBiomeFromKey(RegistryKey<Biome> key) {
+        return BuiltinRegistries.BIOME.get(key);
     }
 
     public static void addFeatureToBiome(Biome biome, GenerationStep.Feature featureStep, ConfiguredFeature<?, ?> feature) {
