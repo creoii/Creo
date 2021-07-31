@@ -4,22 +4,24 @@
   "package": "creoii.creo.core.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "AbstractBlockMixin",
-    "AbstractMinecartEntityMixin",
-    "EnderChestBlockEntityMixin",
-    "HopperBlockEntityMixin",
-    "LivingEntityMixin",
-    "LootableContainerBlockEntityMixin",
-    "MilkableEntityMixin",
-    "PlayerEntityMixin",
-    "WorldMixin"
+    "block.AbstractBlockMixin",
+    "block.EnderChestBlockEntityMixin",
+    "block.HopperBlockEntityMixin",
+    "block.LootableContainerBlockEntityMixin",
+    "entity.AbstractMinecartEntityMixin",
+    "entity.LivingEntityMixin",
+    "entity.MilkableEntityMixin",
+    "entity.PlayerEntityMixin",
+    "world.DefaultBiomeFeaturesMixin",
+    "world.WorldMixin"
   ],
   "client": [
-    "ClientPlayerInteractionManagerMixin",
-    "LivingEntityRendererMixin"
+    "client.interaction.ClientPlayerInteractionManagerMixin",
+    "client.render.LivingEntityRendererMixin",
+    "client.render.PlayerEntityRendererMixin"
   ],
   "server": [
-    "ServerPlayerInteractionManagerMixin"
+    "client.interaction.ServerPlayerInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -44,6 +44,10 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
         return BOATS.get(this.dataTracker.get(BOAT_TYPE));
     }
 
+    public void setBoat(Boat boat) {
+        this.dataTracker.set(BOAT_TYPE, boat.getName());
+    }
+
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
@@ -51,12 +55,12 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
     }
 
     protected void writeCustomDataToNbt(NbtCompound nbt) {
-        nbt.putString("Type1", this.getBoatType().getName());
+        nbt.putString("Boat", this.getBoatType().getName());
     }
 
     protected void readCustomDataFromNbt(NbtCompound nbt) {
-        if (nbt.contains("Type1", 8)) {
-            this.setBoatType(Type.getType(nbt.getString("Type1")));
+        if (nbt.contains("Boat", 8)) {
+            this.setBoatType(Type.getType(nbt.getString("Boat")));
         }
     }
 

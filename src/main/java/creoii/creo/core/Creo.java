@@ -12,6 +12,8 @@ public class Creo implements ModInitializer, ClientModInitializer {
 	public void onInitialize() {
 		EntityRegistry.register();
 		AttributeRegistry.register();
+
+		FeatureRegistry.register();
 	}
 
 	@Override

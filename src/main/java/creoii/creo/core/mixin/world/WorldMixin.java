@@ -1,4 +1,4 @@
-package creoii.creo.core.mixin;
+package creoii.creo.core.mixin.world;
 
 import creoii.creo.core.util.BlockTags;
 import net.minecraft.entity.Entity;

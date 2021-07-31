@@ -1,4 +1,4 @@
-package creoii.creo.core.mixin;
+package creoii.creo.core.mixin.client.interaction;
 
 import creoii.creo.core.registry.AttributeRegistry;
 import net.minecraft.server.network.ServerPlayerEntity;

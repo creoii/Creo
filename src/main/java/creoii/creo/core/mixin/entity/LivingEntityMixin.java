@@ -1,4 +1,4 @@
-package creoii.creo.core.mixin;
+package creoii.creo.core.mixin.entity;
 
 import creoii.creo.core.registry.AttributeRegistry;
 import creoii.creo.core.util.BlockTags;

@@ -1,4 +1,4 @@
-package creoii.creo.core.mixin;
+package creoii.creo.core.mixin.client.render;
 
 import creoii.creo.core.registry.AttributeRegistry;
 import net.minecraft.client.render.entity.LivingEntityRenderer;

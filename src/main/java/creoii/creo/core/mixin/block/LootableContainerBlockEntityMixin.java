@@ -1,4 +1,4 @@
-package creoii.creo.core.mixin;
+package creoii.creo.core.mixin.block;
 
 import creoii.creo.core.registry.AttributeRegistry;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;

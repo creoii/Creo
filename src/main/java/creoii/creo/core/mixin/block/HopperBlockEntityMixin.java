@@ -1,4 +1,4 @@
-package creoii.creo.core.mixin;
+package creoii.creo.core.mixin.block;
 
 import creoii.creo.core.util.ItemTags;
 import net.minecraft.block.BlockState;
