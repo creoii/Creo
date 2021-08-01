@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Constants {
     private static double MINECART_SPEED = 2.0D;
-    private static float BOAT_SPEED = 0.1F;
+    private static float BOAT_SPEED = 0.05F;
     private static int BLOCK_BREAKING_COOLDOWN = 5;
 
     private static final Map<BlockPos, Integer> BREAKING_PROGRESSES = new HashMap<>();
@@ -36,15 +36,15 @@ public class Constants {
         return BLOCK_BREAKING_COOLDOWN;
     }
 
-    public static void setCurrentBreakingProgress(BlockPos pos, int progress) {
+    public static void setBreakingProgress(BlockPos pos, int progress) {
         BREAKING_PROGRESSES.put(pos, progress);
     }
 
-    public static int getCurrentBreakingProgress(BlockPos pos) {
+    public static int getBreakingProgress(BlockPos pos) {
         return BREAKING_PROGRESSES.getOrDefault(pos, -1);
     }
 
-    public static void removeCurrentBreakingProgress(BlockPos pos) {
+    public static void removeBreakingProgress(BlockPos pos) {
         BREAKING_PROGRESSES.remove(pos);
     }
 }

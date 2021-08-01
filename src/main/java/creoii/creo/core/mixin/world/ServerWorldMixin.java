@@ -33,7 +33,7 @@ public class ServerWorldMixin {
                 double e = (double)pos.getY() - serverPlayerEntity.getY();
                 double f = (double)pos.getZ() - serverPlayerEntity.getZ();
                 if (d * d + e * e + f * f < 1024.0D) {
-                    serverPlayerEntity.networkHandler.sendPacket(new BlockBreakingProgressS2CPacket(entityId, pos, Constants.getCurrentBreakingProgress(pos)));
+                    serverPlayerEntity.networkHandler.sendPacket(new BlockBreakingProgressS2CPacket(entityId, pos, Constants.getBreakingProgress(pos)));
                 }
             }
         }));

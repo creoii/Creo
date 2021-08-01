@@ -10,17 +10,12 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
@@ -42,6 +37,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public float getHealth() { return 0.0F; }
     @Shadow public float getMaxHealth() { return 0.0F; }
     @Shadow public void heal(float amount) { }
+    @Shadow protected int computeFallDamage(float fallDistance, float damageMultiplier) { return 0; }
 
     private static final UUID SLOW_FALLING_ID = UUID.fromString("A5B6CF2A-2F7C-31EF-9022-7C3E7D5E6ABA");
     private static final EntityAttributeModifier SLOW_FALLING = new EntityAttributeModifier(SLOW_FALLING_ID, "Slow falling acceleration reduction", -0.07, EntityAttributeModifier.Operation.ADDITION);
@@ -107,6 +103,11 @@ public abstract class LivingEntityMixin extends Entity {
             float f = this.getType().getDimensions().width * 0.8F;
             cir.setReturnValue(this.world.getBlockCollisions(this, Box.of(this.getEyePos(), f, 1.0E-6D, f), (state, pos) -> state.isIn(BlockTags.BLOCKS_VEX)).findAny().isPresent());
         }
+    }
+
+    @Redirect(method = "handleFallDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;computeFallDamage(FF)I"))
+    private int creo$handleFallDamageGravity(LivingEntity entity, float fallDistance, float damageMultiplier) {
+        return this.computeFallDamage(fallDistance * (float) (entity.getAttributeValue(AttributeRegistry.GENERIC_GRAVITY) * 12.5F), damageMultiplier);
     }
 
     @Override

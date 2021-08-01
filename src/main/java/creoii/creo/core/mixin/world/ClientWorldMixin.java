@@ -17,6 +17,6 @@ public class ClientWorldMixin {
 
     @Inject(method = "setBlockBreakingInfo", at = @At("TAIL"))
     private void creo$pauseBlockBreaking(int entityId, BlockPos pos, int progress, CallbackInfo ci) {
-        this.worldRenderer.setBlockBreakingInfo(entityId, pos, Constants.getCurrentBreakingProgress(pos));
+        this.worldRenderer.setBlockBreakingInfo(entityId, pos, Constants.getBreakingProgress(pos));
     }
 }
