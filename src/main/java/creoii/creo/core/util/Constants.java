@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Constants {
-    public static double MINECART_SPEED = 2.0D;
-    public static int BLOCK_BREAKING_COOLDOWN = 0;
+    private static double MINECART_SPEED = 2.0D;
+    private static float BOAT_SPEED = 0.1F;
+    private static int BLOCK_BREAKING_COOLDOWN = 5;
 
     private static final Map<BlockPos, Integer> BREAKING_PROGRESSES = new HashMap<>();
 
@@ -17,6 +18,14 @@ public class Constants {
 
     public static double getMinecartSpeed() {
         return MINECART_SPEED;
+    }
+
+    public static void setBoatSpeed(float boatSpeed) {
+        BOAT_SPEED = boatSpeed;
+    }
+
+    public static float getBoatSpeed() {
+        return BOAT_SPEED;
     }
 
     public static void setBlockBreakingCooldown(int blockBreakingCooldown) {

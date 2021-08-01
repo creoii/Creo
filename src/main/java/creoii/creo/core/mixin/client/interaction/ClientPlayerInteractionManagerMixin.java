@@ -30,21 +30,21 @@ public abstract class ClientPlayerInteractionManagerMixin {
         }
     }
 
-    @Redirect(method = "cancelBlockBreaking", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/world/ClientWorld;setBlockBreakingInfo(ILnet/minecraft/util/math/BlockPos;I)V"))
+    @Redirect(method = { "cancelBlockBreaking", "updateBlockBreakingProgress" }, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/world/ClientWorld;setBlockBreakingInfo(ILnet/minecraft/util/math/BlockPos;I)V"))
     private void creo$pauseBlockBreaking(ClientWorld clientWorld, int entityId, BlockPos pos, int progress) {
-        breakingBlock = true;
-        progress = (int) this.currentBreakingProgress * 10;
-        this.client.world.setBlockBreakingInfo(this.client.player.getId(), this.currentBreakingPos, progress);
-        Constants.setCurrentBreakingProgress(this.currentBreakingPos, progress);
+        //breakingBlock = true;
+        //progress = (int) this.currentBreakingProgress * 10;
+        //this.client.world.setBlockBreakingInfo(this.client.player.getId(), this.currentBreakingPos, progress);
+        //Constants.setCurrentBreakingProgress(this.currentBreakingPos, progress);
     }
 
     @ModifyConstant(method = { "updateBlockBreakingProgress", "attackBlock" }, constant = @Constant(intValue = 5))
     private int creo$replaceBlockBreakingCooldown1(int i) {
-        return Constants.BLOCK_BREAKING_COOLDOWN;
+        return Constants.getBlockBreakingCooldown();
     }
 
     @Inject(method = "breakBlock", at = @At("HEAD"))
     private void creo$removeBreakingProgress(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (!this.client.player.isBlockBreakingRestricted(this.client.world, pos, this.gameMode)) Constants.removeCurrentBreakingProgress(pos);
+        //if (!this.client.player.isBlockBreakingRestricted(this.client.world, pos, this.gameMode)) Constants.removeCurrentBreakingProgress(pos);
     }
 }

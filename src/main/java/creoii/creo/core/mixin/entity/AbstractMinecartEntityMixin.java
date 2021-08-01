@@ -18,6 +18,6 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
 
     @Inject(method = "getMaxOffRailSpeed", at = @At("HEAD"), cancellable = true)
     protected void getMaxOffRailSpeed(CallbackInfoReturnable<Double> cir) {
-        cir.setReturnValue(this.isTouchingWater() ? Constants.MINECART_SPEED : Constants.MINECART_SPEED * 2.0D);
+        cir.setReturnValue(this.isTouchingWater() ? Constants.getMinecartSpeed() : Constants.getMinecartSpeed() * 2.0D);
     }
 }

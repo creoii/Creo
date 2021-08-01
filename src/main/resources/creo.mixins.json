@@ -16,8 +16,7 @@
   ],
   "client": [
     "client.interaction.ClientPlayerInteractionManagerMixin",
-    "client.render.LivingEntityRendererMixin",
-    "world.ClientWorldMixin"
+    "client.render.LivingEntityRendererMixin"
   ],
   "server": [
     "client.interaction.ServerPlayerInteractionManagerMixin"
