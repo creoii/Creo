@@ -2,5 +2,6 @@
   "attribute.name.generic.reach_distance": "Reach Distance",
   "attribute.name.generic.gravity": "Gravity",
   "attribute.name.generic.swim_speed": "Swim Speed",
-  "attribute.name.generic.natural_regeneration": "Natural Regeneration"
+  "attribute.name.generic.natural_regeneration": "Natural Regeneration",
+  "attribute.name.generic.max_air": "Max Air"
 }

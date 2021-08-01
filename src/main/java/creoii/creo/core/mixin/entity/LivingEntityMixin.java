@@ -38,6 +38,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public float getMaxHealth() { return 0.0F; }
     @Shadow public void heal(float amount) { }
     @Shadow protected int computeFallDamage(float fallDistance, float damageMultiplier) { return 0; }
+    @Shadow public abstract AttributeContainer getAttributes();
 
     private static final UUID SLOW_FALLING_ID = UUID.fromString("A5B6CF2A-2F7C-31EF-9022-7C3E7D5E6ABA");
     private static final EntityAttributeModifier SLOW_FALLING = new EntityAttributeModifier(SLOW_FALLING_ID, "Slow falling acceleration reduction", -0.07, EntityAttributeModifier.Operation.ADDITION);
@@ -49,7 +50,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "createLivingAttributes", at = @At("RETURN"))
     private static void creo$createNewAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.getReturnValue().add(AttributeRegistry.GENERIC_GRAVITY).add(AttributeRegistry.GENERIC_SWIM_SPEED).add(AttributeRegistry.GENERIC_REACH_DISTANCE).add(AttributeRegistry.GENERIC_NATURAL_REGENERATION);
+        cir.getReturnValue().add(AttributeRegistry.GENERIC_GRAVITY).add(AttributeRegistry.GENERIC_SWIM_SPEED).add(AttributeRegistry.GENERIC_REACH_DISTANCE).add(AttributeRegistry.GENERIC_NATURAL_REGENERATION).add(AttributeRegistry.GENERIC_MAX_AIR);
     }
 
     @Inject(method = "knockDownwards", at = @At("HEAD"), cancellable = true)
@@ -130,5 +131,10 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
         }
+    }
+
+    @Override
+    public int getMaxAir() {
+        return this.getAttributes() != null ? (int) this.getAttributeValue(AttributeRegistry.GENERIC_MAX_AIR) : 300;
     }
 }

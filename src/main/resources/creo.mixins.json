@@ -9,6 +9,7 @@
     "block.HopperBlockEntityMixin",
     "block.LootableContainerBlockEntityMixin",
     "entity.AbstractMinecartEntityMixin",
+    "entity.HungerManagerMixin",
     "entity.LivingEntityMixin",
     "entity.MilkableEntityMixin",
     "entity.PlayerEntityMixin",
