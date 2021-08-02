@@ -10,10 +10,13 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.VillagerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.Tag;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Difficulty;
@@ -136,5 +139,13 @@ public abstract class LivingEntityMixin extends Entity {
     @Override
     public int getMaxAir() {
         return this.getAttributes() != null ? (int) this.getAttributeValue(AttributeRegistry.GENERIC_MAX_AIR) : 300;
+    }
+
+    @Override
+    public ActionResult interact(PlayerEntity player, Hand hand) {
+        if (this.getType().isIn(EntityTypeTags.RIDEABLE)) {
+            if (player.shouldCancelInteraction()) return ActionResult.PASS;
+            return this.world.isClient ? ActionResult.PASS : player.startRiding(this) ? ActionResult.CONSUME : ActionResult.PASS;
+        } return ActionResult.PASS;
     }
 }

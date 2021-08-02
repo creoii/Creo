@@ -16,6 +16,7 @@
     "entity.LivingEntityMixin",
     "entity.MilkableEntityMixin",
     "entity.PlayerEntityMixin",
+    "entity.SheepEntityMixin",
     "world.WorldMixin"
   ],
   "client": [
