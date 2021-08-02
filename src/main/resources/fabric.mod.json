@@ -17,6 +17,7 @@
   "icon": "assets/creo/icon.png",
 
   "environment": "*",
+  "accessWidener": "creo.accesswidener",
   "entrypoints": {
     "main": [
       "creoii.creo.core.Creo"

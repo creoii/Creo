@@ -143,7 +143,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Override
     public ActionResult interact(PlayerEntity player, Hand hand) {
-        if (this.getType().isIn(EntityTypeTags.RIDEABLE)) {
+        if (this.getType().isIn(EntityTypeTags.VEHICLES)) {
             if (player.shouldCancelInteraction()) return ActionResult.PASS;
             return this.world.isClient ? ActionResult.PASS : player.startRiding(this) ? ActionResult.CONSUME : ActionResult.PASS;
         } return ActionResult.PASS;

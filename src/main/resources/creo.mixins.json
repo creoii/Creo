@@ -6,6 +6,7 @@
   "mixins": [
     "block.AbstractBlockMixin",
     "block.CactusBlockMixin",
+    "block.EnchantingTableBlockMixin",
     "block.EnderChestBlockEntityMixin",
     "block.HopperBlockEntityMixin",
     "block.LootableContainerBlockEntityMixin",
@@ -17,6 +18,7 @@
     "entity.MilkableEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.SheepEntityMixin",
+    "screen.EnchantmentScreenHandlerMixin",
     "world.WorldMixin"
   ],
   "client": [
