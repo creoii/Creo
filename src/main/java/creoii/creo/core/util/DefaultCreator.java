@@ -8,10 +8,8 @@ public class DefaultCreator {
     }
 
     public static void createWood() {
-
     }
 
     public static void createDye() {
-
     }
 }
