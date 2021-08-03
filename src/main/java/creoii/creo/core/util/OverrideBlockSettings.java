@@ -14,11 +14,13 @@ public class OverrideBlockSettings {
     public int luminance;
     public float resistance;
     public float hardness;
+    public float bounciness;
     public boolean toolRequired;
     public boolean randomTicks;
     public float slipperiness;
     public float velocityMultiplier;
     public float jumpVelocityMultiplier;
+    public float slideVelocity;
     public boolean opaque;
     public boolean allowsSpawning;
     public boolean solid;
@@ -35,8 +37,10 @@ public class OverrideBlockSettings {
         this.soundGroup = BlockSoundGroup.STONE;
         this.luminance = 0;
         this.slipperiness = 0.6F;
+        this.bounciness = 0.0F;
         this.velocityMultiplier = 1.0F;
         this.jumpVelocityMultiplier = 1.0F;
+        this.slideVelocity = 0.0F;
         this.opaque = true;
         this.allowsSpawning = false;
         this.solid = this.material.blocksLight();
@@ -89,6 +93,11 @@ public class OverrideBlockSettings {
         return this;
     }
 
+    public OverrideBlockSettings bounciness(float bounciness) {
+        this.bounciness = bounciness;
+        return this;
+    }
+
     public OverrideBlockSettings velocityMultiplier(float velocityMultiplier) {
         this.velocityMultiplier = velocityMultiplier;
         return this;
@@ -96,6 +105,11 @@ public class OverrideBlockSettings {
 
     public OverrideBlockSettings jumpVelocityMultiplier(float jumpVelocityMultiplier) {
         this.jumpVelocityMultiplier = jumpVelocityMultiplier;
+        return this;
+    }
+
+    public OverrideBlockSettings slideVelocity(float slideVelocity) {
+        this.slideVelocity = slideVelocity;
         return this;
     }
 

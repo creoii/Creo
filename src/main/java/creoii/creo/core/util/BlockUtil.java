@@ -38,12 +38,20 @@ public class BlockUtil {
         BLOCK_SETTINGS_REPLACED.replace(block, getOrDefaultSettings(block).slipperiness(slipperiness));
     }
 
+    public static void setBounciness(Block block, float bounciness) {
+        BLOCK_SETTINGS_REPLACED.replace(block, getOrDefaultSettings(block).bounciness(bounciness));
+    }
+
     public static void setVelocity(Block block, float multiplier) {
         BLOCK_SETTINGS_REPLACED.replace(block, getOrDefaultSettings(block).velocityMultiplier(multiplier));
     }
 
     public static void setJumpVelocity(Block block, float multiplier) {
         BLOCK_SETTINGS_REPLACED.replace(block, getOrDefaultSettings(block).jumpVelocityMultiplier(multiplier));
+    }
+
+    public static void setSlideVelocity(Block block, float value) {
+        BLOCK_SETTINGS_REPLACED.replace(block, getOrDefaultSettings(block).slideVelocity(value));
     }
 
     public static void setSounds(Block block, BlockSoundGroup soundGroup) {

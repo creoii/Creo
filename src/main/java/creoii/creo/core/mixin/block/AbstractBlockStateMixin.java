@@ -5,11 +5,16 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractBlock.AbstractBlockState.class)
@@ -104,6 +109,22 @@ public abstract class AbstractBlockStateMixin {
     private void creo$replaceToolRequired(CallbackInfoReturnable<Boolean> cir) {
         if (BlockUtil.BLOCK_SETTINGS_REPLACED.containsKey(this.getBlock())) {
             cir.setReturnValue(BlockUtil.getOrDefaultSettings(this.getBlock()).toolRequired);
+        }
+    }
+
+    @Inject(method = "onEntityCollision", at = @At("TAIL"), cancellable = true)
+    private void creo$replaceSlideVelocity(World world, BlockPos pos, Entity entity, CallbackInfo ci) {
+        if (BlockUtil.BLOCK_SETTINGS_REPLACED.containsKey(this.getBlock())) {
+            float slideVelocity = BlockUtil.getOrDefaultSettings(this.getBlock()).slideVelocity;
+            Vec3d vec3d = entity.getVelocity();
+            double d = slideVelocity / vec3d.y;
+            if (vec3d.y < -0.13D && slideVelocity != 0.0F) {
+                entity.setVelocity(new Vec3d(vec3d.x * d, slideVelocity, vec3d.z * d));
+            } else if (slideVelocity != 0.0F) {
+                entity.setVelocity(new Vec3d(vec3d.x, slideVelocity, vec3d.z));
+            }
+
+            entity.fallDistance = (float) d;
         }
     }
 }
