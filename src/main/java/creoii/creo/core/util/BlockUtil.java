@@ -1,7 +1,13 @@
 package creoii.creo.core.util;
 
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.MapColor;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,6 +19,22 @@ public class BlockUtil {
     public static Map<Block, OverrideBlockSettings> BLOCK_SETTINGS_REPLACED = new HashMap<>();
 
     public static void partiallyBreakBlock(World world, BlockPos pos, int progress) { }
+
+    public static void setRenderLayer(RenderLayer layer, Block block) {
+        BlockRenderLayerMap.INSTANCE.putBlock(block, layer);
+    }
+
+    public static void setFlammability(Block block, int burn, int spread) {
+        FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
+    }
+
+    public static void setCompost(Item item, float chance) {
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item, chance);
+    }
+
+    public static void setFuel(Item item, int fuelTime) {
+        FuelRegistry.INSTANCE.add(item, fuelTime);
+    }
 
     public static OverrideBlockSettings getOrDefaultSettings(Block block) {
         if (BLOCK_SETTINGS_REPLACED.containsKey(block)) return BLOCK_SETTINGS_REPLACED.get(block);

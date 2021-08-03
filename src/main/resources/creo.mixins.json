@@ -21,6 +21,7 @@
     "entity.PlayerEntityMixin",
     "entity.SheepEntityMixin",
     "screen.EnchantmentScreenHandlerMixin",
+    "world.AddEdgeBiomesLayerMixin",
     "world.WorldMixin"
   ],
   "client": [
