@@ -66,16 +66,4 @@ public abstract class BlockMixin extends AbstractBlock {
             cir.setReturnValue(BlockUtil.getOrDefaultSettings(this.asBlock()).randomTicks);
         }
     }
-
-    @Inject(method = "onEntityLand", at = @At("HEAD"))
-    private void creo$replaceBounciness(BlockView world, Entity entity, CallbackInfo ci) {
-        if (BlockUtil.BLOCK_SETTINGS_REPLACED.containsKey(this.asBlock()) && !entity.bypassesLandingEffects()) {
-            double bounciness = BlockUtil.getOrDefaultSettings(this.asBlock()).bounciness;
-            Vec3d vec3d = entity.getVelocity();
-            if (vec3d.y < 0.0D && bounciness != 0.0D) {
-                double d = entity instanceof LivingEntity ? bounciness : bounciness * 0.8D;
-                entity.setVelocity(vec3d.x, -vec3d.y * d, vec3d.z);
-            }
-        }
-    }
 }

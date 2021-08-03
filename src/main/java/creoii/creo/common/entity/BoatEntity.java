@@ -1,5 +1,6 @@
 package creoii.creo.common.entity;
 
+import creoii.creo.core.Creo;
 import creoii.creo.core.registry.EntityRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -11,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.HashMap;
@@ -23,7 +26,7 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
 
     public BoatEntity(EntityType<? extends net.minecraft.entity.vehicle.BoatEntity> entityType, World world) {
         super(entityType, world);
-        BOATS.put("default", new Boat("default", Blocks.OAK_PLANKS, Items.OAK_BOAT));
+        BOATS.put("default", new Boat(new Identifier(Creo.MOD_ID, "default"), Blocks.OAK_PLANKS, Items.OAK_BOAT));
     }
 
     public BoatEntity(World world, double x, double y, double z) {
@@ -32,7 +35,7 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
         this.prevX = x;
         this.prevY = y;
         this.prevZ = z;
-        BOATS.put("default", new Boat("default", Blocks.OAK_PLANKS, Items.OAK_BOAT));
+        BOATS.put("default", new Boat(new Identifier(Creo.MOD_ID, "default"), Blocks.OAK_PLANKS, Items.OAK_BOAT));
     }
 
     @Override
@@ -64,19 +67,14 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
         }
     }
 
-    public static class Boat {
-        private final String name;
-        private final Block base;
-        private final Item item;
+    public record Boat(Identifier id, Block base, Item item) {
 
-        public Boat(String name, Block base, Item item) {
-            this.name = name;
-            this.base = base;
-            this.item = item;
+        public Identifier getIdentifier() {
+            return id;
         }
 
         public String getName() {
-            return name;
+            return id.getPath();
         }
 
         public Block getBase() {
@@ -84,7 +82,7 @@ public class BoatEntity extends net.minecraft.entity.vehicle.BoatEntity {
         }
 
         public Item getItem() {
-            return item;
+            return Registry.ITEM.get(id);
         }
     }
 }

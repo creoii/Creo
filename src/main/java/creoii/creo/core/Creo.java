@@ -15,7 +15,6 @@ public class Creo implements ModInitializer, ClientModInitializer {
 		EntityRegistry.register();
 		AttributeRegistry.register();
 
-		BlockUtil.setSlideVelocity(Blocks.HONEY_BLOCK, -0.5F);
 		BlockUtil.setBounciness(Blocks.STONE, 1.2F);
 	}
 
