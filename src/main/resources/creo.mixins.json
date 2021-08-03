@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "block.AbstractBlockMixin",
+    "block.AbstractBlockStateMixin",
+    "block.BlockMixin",
     "block.CactusBlockMixin",
     "block.EnchantingTableBlockMixin",
     "block.EnderChestBlockEntityMixin",
