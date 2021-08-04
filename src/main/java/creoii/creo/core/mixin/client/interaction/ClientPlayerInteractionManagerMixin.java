@@ -1,7 +1,7 @@
 package creoii.creo.core.mixin.client.interaction;
 
 import creoii.creo.core.registry.AttributeRegistry;
-import creoii.creo.core.util.Constants;
+import creoii.creo.core.util.data.Constants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.entity.player.PlayerEntity;

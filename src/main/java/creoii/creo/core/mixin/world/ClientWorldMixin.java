@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.world;
 
-import creoii.creo.core.util.Constants;
+import creoii.creo.core.util.data.Constants;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.BlockPos;

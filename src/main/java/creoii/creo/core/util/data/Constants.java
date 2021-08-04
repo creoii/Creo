@@ -1,4 +1,4 @@
-package creoii.creo.core.util;
+package creoii.creo.core.util.data;
 
 import net.minecraft.util.math.BlockPos;
 

@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.entity;
 
-import creoii.creo.core.util.ItemTags;
+import creoii.creo.core.util.tags.ItemTags;
 import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;

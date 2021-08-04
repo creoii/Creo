@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.world;
 
-import creoii.creo.core.util.BlockTags;
+import creoii.creo.core.util.tags.BlockTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.RavagerEntity;
 import net.minecraft.util.math.BlockPos;

@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.screen;
 
-import creoii.creo.core.util.BlockTags;
+import creoii.creo.core.util.tags.BlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.screen.EnchantmentScreenHandler;

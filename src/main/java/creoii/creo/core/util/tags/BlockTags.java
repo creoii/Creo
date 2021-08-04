@@ -1,4 +1,4 @@
-package creoii.creo.core.util;
+package creoii.creo.core.util.tags;
 
 import creoii.creo.core.Creo;
 import net.fabricmc.fabric.api.tag.TagRegistry;

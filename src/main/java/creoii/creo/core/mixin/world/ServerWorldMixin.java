@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.world;
 
-import creoii.creo.core.util.Constants;
+import creoii.creo.core.util.data.Constants;
 import net.minecraft.network.packet.s2c.play.BlockBreakingProgressS2CPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;

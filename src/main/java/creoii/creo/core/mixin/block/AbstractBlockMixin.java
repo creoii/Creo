@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.block;
 
-import creoii.creo.core.util.BlockTags;
+import creoii.creo.core.util.tags.BlockTags;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;

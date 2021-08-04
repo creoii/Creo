@@ -1,8 +1,8 @@
 package creoii.creo.core.mixin.entity;
 
 import creoii.creo.core.registry.AttributeRegistry;
-import creoii.creo.core.util.BlockTags;
-import creoii.creo.core.util.EntityTypeTags;
+import creoii.creo.core.util.tags.BlockTags;
+import creoii.creo.core.util.tags.EntityTypeTags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.effect.StatusEffect;

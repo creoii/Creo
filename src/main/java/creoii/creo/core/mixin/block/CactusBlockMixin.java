@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.block;
 
-import creoii.creo.core.util.ItemTags;
+import creoii.creo.core.util.tags.ItemTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CactusBlock;
 import net.minecraft.entity.Entity;

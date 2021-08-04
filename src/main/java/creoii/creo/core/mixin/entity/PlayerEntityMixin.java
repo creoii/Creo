@@ -1,7 +1,7 @@
 package creoii.creo.core.mixin.entity;
 
 import creoii.creo.core.registry.AttributeRegistry;
-import creoii.creo.core.util.BlockTags;
+import creoii.creo.core.util.tags.BlockTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;

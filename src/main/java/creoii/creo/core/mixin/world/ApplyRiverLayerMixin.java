@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.world;
 
-import creoii.creo.core.util.BiomeTags;
+import creoii.creo.core.util.tags.BiomeTags;
 import creoii.creo.core.util.BiomeUtil;
 import net.minecraft.world.biome.layer.ApplyRiverLayer;
 import net.minecraft.world.biome.layer.util.IdentityCoordinateTransformer;

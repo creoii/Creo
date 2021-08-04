@@ -1,7 +1,7 @@
 package creoii.creo.core.mixin.tag;
 
 import com.google.common.collect.ImmutableSet;
-import creoii.creo.core.util.BiomeTags;
+import creoii.creo.core.util.tags.BiomeTags;
 import net.minecraft.tag.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

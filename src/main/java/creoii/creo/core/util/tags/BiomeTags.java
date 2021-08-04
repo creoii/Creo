@@ -1,4 +1,4 @@
-package creoii.creo.core.util;
+package creoii.creo.core.util.tags;
 
 import net.minecraft.tag.RequiredTagList;
 import net.minecraft.tag.RequiredTagListRegistry;

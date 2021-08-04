@@ -1,6 +1,6 @@
 package creoii.creo.core.mixin.entity;
 
-import creoii.creo.core.util.ItemTags;
+import creoii.creo.core.util.tags.ItemTags;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
