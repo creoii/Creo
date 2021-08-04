@@ -23,7 +23,7 @@
     "screen.EnchantmentScreenHandlerMixin",
     "tag.RequiredTagListRegistryMixin",
     "world.AddEdgeBiomesLayerMixin",
-    "world.AddIslandLayerMixin",
+    "world.AddMushroomIslandLayerMixin",
     "world.ApplyRiverLayerMixin",
     "world.WorldMixin"
   ],

@@ -15,9 +15,8 @@ public final class BiomeTags {
     public static final Tag<Biome> BIRCH = biome("birch");
     public static final Tag<Biome> COLD = biome("cold");
     public static final Tag<Biome> DARK_OAK = biome("dark_oak");
-    public static final Tag<Biome> DEEP = biome("deep");
+    public static final Tag<Biome> DEEP_OCEAN = biome("deep_ocean");
     public static final Tag<Biome> EDGE = biome("edge");
-    public static final Tag<Biome> EXTREME_HILLS = biome("extreme_hills");
     public static final Tag<Biome> FOREST = biome("forest");
     public static final Tag<Biome> FLOWER_FOREST = biome("flower_forest");
     public static final Tag<Biome> FROZEN = biome("frozen");
@@ -39,6 +38,7 @@ public final class BiomeTags {
     public static final Tag<Biome> RIVER = biome("river");
     public static final Tag<Biome> ROOFED = biome("roofed");
     public static final Tag<Biome> SAVANNA = biome("savanna");
+    public static final Tag<Biome> SHALLOW_OCEAN = biome("shallow_ocean");
     public static final Tag<Biome> SHORE = biome("shore");
     public static final Tag<Biome> STONE = biome("stone");
     public static final Tag<Biome> SWAMP = biome("swamp");

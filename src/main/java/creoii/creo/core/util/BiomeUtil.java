@@ -48,14 +48,24 @@ public class BiomeUtil {
         return tag.contains(BuiltinRegistries.BIOME.get(biomeId));
     }
 
+    /**
+     * {@link net.fabricmc.fabric.api.biome.v1.OverworldBiomes}
+     */
     public static void addBeachToBiome(RegistryKey<Biome> center, BiomeBeach beach) {
         BIOME_BEACHES.put(center, beach);
     }
 
+    /**
+     * {@link net.fabricmc.fabric.api.biome.v1.OverworldBiomes}
+     */
     public static void addEdgeToBiome(RegistryKey<Biome> center, BiomeEdge edge) {
         BIOME_EDGES.put(center, edge);
     }
 
+    /**
+     * {@link net.fabricmc.fabric.api.biome.v1.OverworldBiomes}
+     * Seems to not work? Idk
+     */
     public static void addVariantToBiome(RegistryKey<Biome> original, BiomeVariant variant) {
         BIOME_VARIANTS.put(original, variant);
     }
