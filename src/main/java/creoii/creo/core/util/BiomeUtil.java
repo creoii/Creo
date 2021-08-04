@@ -1,9 +1,11 @@
 package creoii.creo.core.util;
 
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 
 import java.util.HashMap;
 import java.util.List;
@@ -74,8 +76,9 @@ public class BiomeUtil {
         BIOME_RIVERS.put(biome, river);
     }
 
-    public static void makeBiomeIsland(RegistryKey<Biome> biome, int chance) {
-        ISLAND_BIOMES.put(biome, chance);
+    @SuppressWarnings("deprecation")
+    public static void makeBiomeIsland(RegistryKey<Biome> biome, double chance) {
+        OverworldBiomes.addBiomeVariant(BiomeKeys.DEEP_OCEAN, biome, chance);
     }
 
     public record BiomeBeach(RegistryKey<Biome> beach, int weight) {}
@@ -90,4 +93,5 @@ public class BiomeUtil {
     }
     public record BiomeVariant(RegistryKey<Biome> original, int weight) {}
     public record BiomeRiver(RegistryKey<Biome> river) {}
+    public record IslandBiome(RegistryKey<Biome> biome, int chance) {}
 }

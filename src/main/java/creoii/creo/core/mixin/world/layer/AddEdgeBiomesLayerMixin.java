@@ -1,7 +1,7 @@
-package creoii.creo.core.mixin.world;
+package creoii.creo.core.mixin.world.layer;
 
-import creoii.creo.core.util.tags.BiomeTags;
 import creoii.creo.core.util.BiomeUtil;
+import creoii.creo.core.util.tags.BiomeTags;
 import net.minecraft.world.biome.layer.AddEdgeBiomesLayer;
 import net.minecraft.world.biome.layer.util.LayerRandomnessSource;
 import org.spongepowered.asm.mixin.Mixin;

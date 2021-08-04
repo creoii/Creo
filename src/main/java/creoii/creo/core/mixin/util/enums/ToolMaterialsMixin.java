@@ -1,11 +1,8 @@
 package creoii.creo.core.mixin.util.enums;
 
 import creoii.creo.core.util.data.EnumRecords;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.sound.SoundEvent;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;

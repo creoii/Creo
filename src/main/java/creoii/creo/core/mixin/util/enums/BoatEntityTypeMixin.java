@@ -2,10 +2,7 @@ package creoii.creo.core.mixin.util.enums;
 
 import creoii.creo.core.util.data.EnumRecords;
 import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.ArmorMaterials;
-import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;

@@ -28,14 +28,12 @@
     "util.enums.EnchantmentRarityMixin",
     "util.enums.RarityMixin",
     "util.enums.ToolMaterialsMixin",
-    "world.AddEdgeBiomesLayerMixin",
-    "world.AddMushroomIslandLayerMixin",
-    "world.ApplyRiverLayerMixin",
-    "world.WorldMixin"
+    "world.WorldMixin",
+    "world.layer.AddEdgeBiomesLayerMixin",
+    "world.layer.ApplyRiverLayerMixin"
   ],
   "client": [
-    "client.interaction.ClientPlayerInteractionManagerMixin",
-    "client.render.LivingEntityRendererMixin"
+    "client.interaction.ClientPlayerInteractionManagerMixin"
   ],
   "server": [
     "client.interaction.ServerPlayerInteractionManagerMixin"
