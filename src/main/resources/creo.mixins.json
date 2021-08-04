@@ -21,7 +21,10 @@
     "entity.PlayerEntityMixin",
     "entity.SheepEntityMixin",
     "screen.EnchantmentScreenHandlerMixin",
+    "tag.RequiredTagListRegistryMixin",
     "world.AddEdgeBiomesLayerMixin",
+    "world.AddIslandLayerMixin",
+    "world.ApplyRiverLayerMixin",
     "world.WorldMixin"
   ],
   "client": [

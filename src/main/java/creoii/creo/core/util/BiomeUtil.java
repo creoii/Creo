@@ -1,32 +1,51 @@
 package creoii.creo.core.util;
 
+import net.minecraft.tag.Tag;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class BiomeUtil {
     public static Map<RegistryKey<Biome>, BiomeBeach> BIOME_BEACHES = new HashMap<>();
     public static Map<RegistryKey<Biome>, BiomeEdge> BIOME_EDGES = new HashMap<>();
     public static Map<RegistryKey<Biome>, BiomeVariant> BIOME_VARIANTS = new HashMap<>();
-    public static Map<RegistryKey<Biome>, IslandBiome> ISLAND_BIOMES = new HashMap<>();
+    public static Map<RegistryKey<Biome>, BiomeRiver> BIOME_RIVERS = new HashMap<>();
+    public static Map<RegistryKey<Biome>, Integer> ISLAND_BIOMES = new HashMap<>();
 
-    public static boolean isOcean(int id) {
-        return id == 44 || id == 45 || id == 0 || id == 46 || id == 10 || id == 47 || id == 48 || id == 24 || id == 49 || id == 50;
+    public static Biome toBiome(RegistryKey<Biome> key) {
+        return BuiltinRegistries.BIOME.get(key);
     }
 
-    public static boolean isShallowOcean(int id) {
-        return id == 44 || id == 45 || id == 0 || id == 46 || id == 10;
+    public static Biome toBiome(int id) {
+        return BuiltinRegistries.BIOME.get(id);
     }
 
-    public static boolean isWooded(int id) {
-        return id == 4 || id == 5;
+    public static RegistryKey<Biome> toKey(Biome biome) {
+        return BuiltinRegistries.BIOME.getKey(biome).get();
     }
 
-    public boolean isBadlands(int id) {
-        return id == 37 || id == 38 || id == 39 || id == 165 || id == 166 || id == 167;
+    public static RegistryKey<Biome> toKey(int id) {
+        return toKey(toBiome(id));
+    }
+
+    public static int getId(Biome biome) {
+        return BuiltinRegistries.BIOME.getRawId(biome);
+    }
+
+    public static int getId(RegistryKey<Biome> key) {
+        return getId(BuiltinRegistries.BIOME.get(key));
+    }
+
+    public static boolean isIn(Biome biome, Tag<Biome> tag) {
+        return tag.contains(biome);
+    }
+
+    public static boolean isIn(int biomeId, Tag<Biome> tag) {
+        return tag.contains(BuiltinRegistries.BIOME.get(biomeId));
     }
 
     public static void addBeachToBiome(RegistryKey<Biome> center, BiomeBeach beach) {
@@ -41,12 +60,24 @@ public class BiomeUtil {
         BIOME_VARIANTS.put(original, variant);
     }
 
-    public static void makeBiomeIsland(RegistryKey<Biome> biome, IslandBiome island) {
-        ISLAND_BIOMES.put(biome, island);
+    public static void addRiverToBiome(RegistryKey<Biome> biome, BiomeRiver river) {
+        BIOME_RIVERS.put(biome, river);
+    }
+
+    public static void makeBiomeIsland(RegistryKey<Biome> biome, int chance) {
+        ISLAND_BIOMES.put(biome, chance);
     }
 
     public record BiomeBeach(RegistryKey<Biome> beach, int weight) {}
-    public record BiomeEdge(RegistryKey<Biome> edge, RegistryKey<Biome> nextTo, Optional<RegistryKey<Biome>> blacklist) {}
+    public record BiomeEdge(RegistryKey<Biome> edge, RegistryKey<Biome> nextTo, List<RegistryKey<Biome>> blacklist) {
+        public boolean notBlacklisted(int b) {
+            return !blacklist.contains(toKey(b));
+        }
+
+        public boolean matchesNextTo(int b) {
+            return nextTo == null || b == getId(nextTo);
+        }
+    }
     public record BiomeVariant(RegistryKey<Biome> original, int weight) {}
-    public record IslandBiome(RegistryKey<Biome> biome) {}
+    public record BiomeRiver(RegistryKey<Biome> river) {}
 }
