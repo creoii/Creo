@@ -83,13 +83,13 @@ public class BiomeUtil {
     }
 
     public record BiomeBeach(RegistryKey<Biome> beach, int weight) {}
-    public record BiomeEdge(RegistryKey<Biome> edge, RegistryKey<Biome> nextTo, List<RegistryKey<Biome>> blacklist) {
-        public boolean notBlacklisted(int b) {
-            return !blacklist.contains(toKey(b));
+    public record BiomeEdge(RegistryKey<Biome> edge, List<RegistryKey<Biome>> whitelist, List<RegistryKey<Biome>> blacklist) {
+        public boolean blacklisted(int b) {
+            return blacklist.contains(toKey(b));
         }
 
-        public boolean matchesNextTo(int b) {
-            return nextTo == null || b == getId(nextTo);
+        public boolean whitelisted(int b) {
+            return whitelist.contains(toKey(b));
         }
     }
     public record BiomeVariant(RegistryKey<Biome> original, int weight) {}

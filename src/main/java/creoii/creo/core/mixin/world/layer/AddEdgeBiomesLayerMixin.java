@@ -27,7 +27,7 @@ public class AddEdgeBiomesLayerMixin {
 
         BiomeUtil.BIOME_EDGES.forEach((key, value) -> {
             if (center == BiomeUtil.getId(key)) {
-                if ((value.matchesNextTo(n) || value.matchesNextTo(e) || value.matchesNextTo(s) || value.matchesNextTo(w)) && (value.notBlacklisted(e) || value.notBlacklisted(n) || value.notBlacklisted(s) || value.notBlacklisted(w))) {
+                if ((value.whitelisted(n) || value.whitelisted(e) || value.whitelisted(s) || value.whitelisted(w)) && (!value.blacklisted(e) || !value.blacklisted(n) || !value.blacklisted(s) || !value.blacklisted(w))) {
                     cir.setReturnValue(BiomeUtil.getId(value.edge()));
                 }
             }
