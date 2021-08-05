@@ -1,6 +1,5 @@
 package creoii.creo.core.util;
 
-import creoii.creo.common.biome.AbstractBiome;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -17,10 +16,6 @@ public class RegistryUtil {
         Registry.register(Registry.BLOCK, id, block);
         if (group != null) Registry.register(Registry.ITEM, id, new BlockItem(block, new Item.Settings().group(group)));
         return block;
-    }
-
-    public static Biome createBiome(AbstractBiome biome) {
-        return Registry.register(BuiltinRegistries.BIOME, biome.getKey().getValue(), biome.getBiome());
     }
 
     public static RegistryKey<Biome> createBiome(Identifier id, Biome biome) {

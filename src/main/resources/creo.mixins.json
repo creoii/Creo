@@ -28,8 +28,7 @@
     "util.enums.RarityMixin",
     "util.enums.ToolMaterialsMixin",
     "world.WorldMixin",
-    "world.layer.AddEdgeBiomesLayerMixin",
-    "world.layer.ApplyRiverLayerMixin"
+    "world.layer.AddEdgeBiomesLayerMixin"
   ],
   "client": [
     "client.interaction.ClientPlayerInteractionManagerMixin"

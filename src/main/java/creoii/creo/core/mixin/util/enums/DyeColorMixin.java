@@ -16,9 +16,9 @@ import java.util.Arrays;
 public class DyeColorMixin {
     @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static DyeColor[] field_7959;
 
-    @Invoker("<init>")
+    @Invoker(value = "<init>", remap = false)
     @SuppressWarnings("InvokerTarget")
-    private static DyeColor create(String nameId, int id, int woolId, String name, int color, MapColor mapColor, int fireworkColor, int signColor) {
+    private static DyeColor init(String enumName, int ordinal, int woolId, String name, int color, MapColor mapColor, int fireworkColor, int signColor) {
         throw new AssertionError();
     }
 
@@ -27,7 +27,7 @@ public class DyeColorMixin {
         DyeColor last = values.get(values.size() - 1);
 
         EnumRecords.DYES.forEach((dye) -> {
-            values.add(create(dye.name().toUpperCase(), last.ordinal() + 1, dye.woolId(), dye.name(), dye.color(), dye.mapColor(), dye.fireworkColor(), dye.signColor()));
+            values.add(init(dye.name().toUpperCase(), last.ordinal() + 1, dye.woolId(), dye.name(), dye.color(), dye.mapColor(), dye.fireworkColor(), dye.signColor()));
         });
 
         field_7959 = values.toArray(new DyeColor[0]);

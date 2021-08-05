@@ -47,36 +47,42 @@ public class DefaultCreator {
     public static EnumRecords.ArmorMaterial createArmorMaterial(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
         EnumRecords.ArmorMaterial material = new EnumRecords.ArmorMaterial(name, durabilityMultiplier, protectionAmounts, enchantability, equipSound, toughness, knockbackResistance, repairIngredientSupplier);
         EnumRecords.ARMOR_MATERIALS.add(material);
+        System.out.println(EnumRecords.ARMOR_MATERIALS);
         return material;
     }
 
     public static EnumRecords.BoatType createBoatType(Identifier id, Block base) {
         EnumRecords.BoatType type = new EnumRecords.BoatType(base, id.getPath());
         EnumRecords.BOAT_TYPES.add(type);
+        System.out.println(EnumRecords.BOAT_TYPES);
         return type;
     }
 
     public static EnumRecords.DyeColor createDyeColor(Identifier id, int woolId, int color, MapColor mapColor, int fireworkColor, int signColor) {
         EnumRecords.DyeColor dyeColor = new EnumRecords.DyeColor(woolId, id.getPath(), color, mapColor, fireworkColor, signColor);
         EnumRecords.DYES.add(dyeColor);
+        System.out.println(EnumRecords.DYES);
         return dyeColor;
     }
 
     public static EnumRecords.EnchantmentRarity createEnchantmentRarity(String name, int weight) {
         EnumRecords.EnchantmentRarity rarity = new EnumRecords.EnchantmentRarity(name, weight);
         EnumRecords.ENCHANTMENT_RARITIES.add(rarity);
+        System.out.println(EnumRecords.ENCHANTMENT_RARITIES);
         return rarity;
     }
 
     public static EnumRecords.Rarity createItemRarity(String name, Formatting formatting) {
         EnumRecords.Rarity rarity = new EnumRecords.Rarity(name, formatting);
         EnumRecords.RARITIES.add(rarity);
+        System.out.println(EnumRecords.RARITIES);
         return rarity;
     }
 
     public static EnumRecords.ToolMaterial createToolMaterial(String name, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         EnumRecords.ToolMaterial material = new EnumRecords.ToolMaterial(name, miningLevel, itemDurability, miningSpeed, attackDamage, enchantability, repairIngredient);
         EnumRecords.TOOL_MATERIALS.add(material);
+        System.out.println(EnumRecords.TOOL_MATERIALS);
         return material;
     }
 }

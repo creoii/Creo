@@ -17,9 +17,9 @@ import java.util.function.Supplier;
 public abstract class ToolMaterialsMixin {
     @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static ToolMaterials[] field_8926;
 
-    @Invoker("<init>")
+    @Invoker(value = "<init>", remap = false)
     @SuppressWarnings("InvokerTarget")
-    private static ToolMaterials create(String name, int id, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    private static ToolMaterials init(String enumName, int ordinal, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         throw new AssertionError();
     }
 
@@ -28,7 +28,7 @@ public abstract class ToolMaterialsMixin {
         ToolMaterials last = values.get(values.size() - 1);
 
         EnumRecords.TOOL_MATERIALS.forEach((material) -> {
-            values.add(create(material.name().toUpperCase(), last.ordinal() + 1, material.miningLevel(), material.itemDurability(), material.miningSpeed(), material.attackDamage(), material.enchantability(), material.repairIngredient()));
+            values.add(init(material.name().toUpperCase(), last.ordinal() + 1, material.miningLevel(), material.itemDurability(), material.miningSpeed(), material.attackDamage(), material.enchantability(), material.repairIngredient()));
         });
 
         field_8926 = values.toArray(new ToolMaterials[0]);

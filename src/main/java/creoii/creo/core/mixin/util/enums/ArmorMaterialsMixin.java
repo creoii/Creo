@@ -20,7 +20,7 @@ public abstract class ArmorMaterialsMixin {
 
     @Invoker("<init>")
     @SuppressWarnings("InvokerTarget")
-    private static ArmorMaterials create(String nameId, int id, String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
+    static ArmorMaterials invokeInit(String enumName, int ordinal, String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
         throw new AssertionError();
     }
 
@@ -29,7 +29,7 @@ public abstract class ArmorMaterialsMixin {
         ArmorMaterials last = values.get(values.size() - 1);
 
         EnumRecords.ARMOR_MATERIALS.forEach((material) -> {
-            values.add(create(material.name().toUpperCase(), last.ordinal() + 1, material.name(), material.durabilityMultiplier(), material.protectionAmounts(), material.enchantability(), material.equipSound(), material.toughness(), material.knockbackResistance(), material.repairIngredientSupplier()));
+            values.add(invokeInit(material.name().toUpperCase(), last.ordinal() + 1, material.name(), material.durabilityMultiplier(), material.protectionAmounts(), material.enchantability(), material.equipSound(), material.toughness(), material.knockbackResistance(), material.repairIngredientSupplier()));
         });
 
         field_7888 = values.toArray(new ArmorMaterials[0]);

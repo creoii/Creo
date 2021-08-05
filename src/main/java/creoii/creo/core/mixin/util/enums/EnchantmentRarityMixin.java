@@ -15,9 +15,9 @@ import java.util.Arrays;
 public abstract class EnchantmentRarityMixin {
     @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static Enchantment.Rarity[] field_9092;
 
-    @Invoker("<init>")
+    @Invoker(value = "<init>", remap = false)
     @SuppressWarnings("InvokerTarget")
-    private static Enchantment.Rarity create(String name, int id, int weight) {
+    private static Enchantment.Rarity init(String enumName, int ordinal, int weight) {
         throw new AssertionError();
     }
 
@@ -26,7 +26,7 @@ public abstract class EnchantmentRarityMixin {
         Enchantment.Rarity last = values.get(values.size() - 1);
 
         EnumRecords.ENCHANTMENT_RARITIES.forEach((rarity) -> {
-            values.add(create(rarity.name().toUpperCase(), last.ordinal() + 1, rarity.weight()));
+            values.add(init(rarity.name().toUpperCase(), last.ordinal() + 1, rarity.weight()));
         });
 
         field_9092 = values.toArray(new Enchantment.Rarity[0]);

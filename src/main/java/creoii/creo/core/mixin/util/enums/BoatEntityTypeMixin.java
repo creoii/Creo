@@ -16,9 +16,9 @@ import java.util.Arrays;
 public class BoatEntityTypeMixin {
     @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static BoatEntity.Type[] field_7724;
 
-    @Invoker("<init>")
+    @Invoker(value = "<init>", remap = false)
     @SuppressWarnings("InvokerTarget")
-    private static BoatEntity.Type create(String nameId, int id, Block base, String name) {
+    private static BoatEntity.Type init(String enumName, int ordinal, Block base, String name) {
         throw new AssertionError();
     }
 
@@ -27,7 +27,7 @@ public class BoatEntityTypeMixin {
         BoatEntity.Type last = values.get(values.size() - 1);
 
         EnumRecords.BOAT_TYPES.forEach((type) -> {
-            values.add(create(type.name().toUpperCase(), last.ordinal() + 1, type.base(), type.name()));
+            values.add(init(type.name().toUpperCase(), last.ordinal() + 1, type.base(), type.name()));
         });
 
         field_7724 = values.toArray(new BoatEntity.Type[0]);
