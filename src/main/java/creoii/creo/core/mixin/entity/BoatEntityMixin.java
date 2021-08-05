@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+/**
+ * DOES NOT WORK
+ */
 @Mixin(BoatEntity.class)
 public abstract class BoatEntityMixin extends Entity {
     @Shadow private boolean pressingLeft;

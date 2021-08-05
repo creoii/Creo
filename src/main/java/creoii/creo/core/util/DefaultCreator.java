@@ -74,7 +74,7 @@ public class DefaultCreator {
         return rarity;
     }
 
-    public static EnumRecords.ToolMaterial createToolMaterial(String name, int id, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    public static EnumRecords.ToolMaterial createToolMaterial(String name, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         EnumRecords.ToolMaterial material = new EnumRecords.ToolMaterial(name, miningLevel, itemDurability, miningSpeed, attackDamage, enchantability, repairIngredient);
         EnumRecords.TOOL_MATERIALS.add(material);
         return material;

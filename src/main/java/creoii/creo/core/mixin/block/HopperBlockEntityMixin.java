@@ -16,6 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
+/**
+ * DOES NOT WORK
+ */
 @Mixin(HopperBlockEntity.class)
 public class HopperBlockEntityMixin {
     @Inject(method = "getInputItemEntities", at = @At("RETURN"))

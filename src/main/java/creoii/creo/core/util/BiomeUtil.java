@@ -15,7 +15,7 @@ public class BiomeUtil {
     public static Map<RegistryKey<Biome>, BiomeBeach> BIOME_BEACHES = new HashMap<>();
     public static Map<RegistryKey<Biome>, BiomeEdge> BIOME_EDGES = new HashMap<>();
     public static Map<RegistryKey<Biome>, BiomeVariant> BIOME_VARIANTS = new HashMap<>();
-    public static Map<RegistryKey<Biome>, BiomeRiver> BIOME_RIVERS = new HashMap<>();
+    public static Map<RegistryKey<Biome>, RegistryKey<Biome>> BIOME_RIVERS = new HashMap<>();
     public static Map<RegistryKey<Biome>, Integer> ISLAND_BIOMES = new HashMap<>();
 
     public static Biome toBiome(RegistryKey<Biome> key) {
@@ -72,8 +72,9 @@ public class BiomeUtil {
         BIOME_VARIANTS.put(original, variant);
     }
 
-    public static void addRiverToBiome(RegistryKey<Biome> biome, BiomeRiver river) {
-        BIOME_RIVERS.put(biome, river);
+    @SuppressWarnings("deprecation")
+    public static void addRiverToBiome(RegistryKey<Biome> biome, RegistryKey<Biome> river) {
+        OverworldBiomes.setRiverBiome(biome, river);
     }
 
     @SuppressWarnings("deprecation")
@@ -92,6 +93,5 @@ public class BiomeUtil {
         }
     }
     public record BiomeVariant(RegistryKey<Biome> original, int weight) {}
-    public record BiomeRiver(RegistryKey<Biome> river) {}
     public record IslandBiome(RegistryKey<Biome> biome, int chance) {}
 }

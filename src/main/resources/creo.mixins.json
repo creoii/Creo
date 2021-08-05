@@ -20,7 +20,6 @@
     "entity.MilkableEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.SheepEntityMixin",
-    "screen.EnchantmentScreenHandlerMixin",
     "tag.RequiredTagListRegistryMixin",
     "util.enums.ArmorMaterialsMixin",
     "util.enums.BoatEntityTypeMixin",
