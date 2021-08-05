@@ -11,4 +11,6 @@ public class EntityTypeTags {
     public static final Tag<EntityType<?>> SPIDERS = TagRegistry.entityType(new Identifier(Creo.MOD_ID, "spiders"));
     public static final Tag<EntityType<?>> MILKABLES = TagRegistry.entityType(new Identifier(Creo.MOD_ID, "milkables"));
     public static final Tag<EntityType<?>> VEHICLES = TagRegistry.entityType(new Identifier(Creo.MOD_ID, "vehicles"));
+    public static final Tag<EntityType<?>> PROJECTILES_PASS_THROUGH = TagRegistry.entityType(new Identifier(Creo.MOD_ID, "projectiles_pass_through"));
+    public static final Tag<EntityType<?>> IMMOVABLE_BY_FLUIDS = TagRegistry.entityType(new Identifier(Creo.MOD_ID, "immovable_by_fluids"));
 }

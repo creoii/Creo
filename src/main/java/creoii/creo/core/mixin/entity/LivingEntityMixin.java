@@ -151,4 +151,9 @@ public abstract class LivingEntityMixin extends Entity {
             return this.world.isClient ? ActionResult.PASS : player.startRiding(this) ? ActionResult.CONSUME : ActionResult.PASS;
         } return ActionResult.PASS;
     }
+
+    @Override
+    public boolean isPushedByFluids() {
+        return !this.getType().isIn(EntityTypeTags.IMMOVABLE_BY_FLUIDS);
+    }
 }

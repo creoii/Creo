@@ -21,7 +21,6 @@ public class BiomeUtil {
     public static Biome toBiome(RegistryKey<Biome> key) {
         return BuiltinRegistries.BIOME.get(key);
     }
-
     public static Biome toBiome(int id) {
         return BuiltinRegistries.BIOME.get(id);
     }
@@ -29,7 +28,6 @@ public class BiomeUtil {
     public static RegistryKey<Biome> toKey(Biome biome) {
         return BuiltinRegistries.BIOME.getKey(biome).get();
     }
-
     public static RegistryKey<Biome> toKey(int id) {
         return toKey(toBiome(id));
     }
@@ -37,7 +35,6 @@ public class BiomeUtil {
     public static int getId(Biome biome) {
         return BuiltinRegistries.BIOME.getRawId(biome);
     }
-
     public static int getId(RegistryKey<Biome> key) {
         return getId(BuiltinRegistries.BIOME.get(key));
     }
@@ -45,10 +42,7 @@ public class BiomeUtil {
     public static boolean isIn(Biome biome, Tag<Biome> tag) {
         return tag.contains(biome);
     }
-
-    public static boolean isIn(int biomeId, Tag<Biome> tag) {
-        return tag.contains(BuiltinRegistries.BIOME.get(biomeId));
-    }
+    public static boolean isIn(int biomeId, Tag<Biome> tag) { return tag.contains(BuiltinRegistries.BIOME.get(biomeId)); }
 
     /**
      * {@link net.fabricmc.fabric.api.biome.v1.OverworldBiomes}

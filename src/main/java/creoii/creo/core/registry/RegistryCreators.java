@@ -1,4 +1,4 @@
-package creoii.creo.core.util;
+package creoii.creo.core.registry;
 
 import creoii.creo.common.block.ButtonBlock;
 import creoii.creo.common.block.LogBlock;
@@ -6,6 +6,7 @@ import creoii.creo.common.block.PressurePlateBlock;
 import creoii.creo.common.block.StairsBlock;
 import creoii.creo.common.entity.BoatEntity;
 import creoii.creo.common.item.BoatItem;
+import creoii.creo.core.util.RegistryUtil;
 import creoii.creo.core.util.data.EnumRecords;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
@@ -19,7 +20,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
 
-public class DefaultCreator {
+public class RegistryCreators {
     public static BoatEntity.Boat createBoat(BoatEntity.Boat boat) {
         BoatEntity.BOATS.put(boat.getName(), boat);
         return boat;
@@ -42,6 +43,33 @@ public class DefaultCreator {
         RegistryUtil.createBlock(new Identifier(namespace, name + "_sign"), new SignBlock(AbstractBlock.Settings.copy(Blocks.OAK_SIGN), SignType.OAK), ItemGroup.DECORATIONS);
         RegistryUtil.createBlock(new Identifier(namespace, name + "_wall_sign"), new WallSignBlock(AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN), SignType.OAK), null);
         Registry.register(Registry.ITEM, new Identifier(namespace, name + "_boat"), new BoatItem(createBoat(new BoatEntity.Boat(new Identifier(namespace, name), planks, null)), new Item.Settings().maxCount(1).group(ItemGroup.TRANSPORTATION)));
+    }
+
+    public static void createStone(String namespace, String name, boolean hasBricks, boolean hasTiles) {
+        Block stone = RegistryUtil.createBlock(new Identifier(namespace, name), new Block(AbstractBlock.Settings.copy(Blocks.STONE)), ItemGroup.BUILDING_BLOCKS);
+        RegistryUtil.createBlock(new Identifier(namespace, name + "_slab"), new SlabBlock(AbstractBlock.Settings.copy(stone)), ItemGroup.BUILDING_BLOCKS);
+        RegistryUtil.createBlock(new Identifier(namespace, name + "_stairs"), new StairsBlock(stone.getDefaultState(), AbstractBlock.Settings.copy(stone)), ItemGroup.BUILDING_BLOCKS);
+        RegistryUtil.createBlock(new Identifier(namespace, name + "_wall"), new WallBlock(AbstractBlock.Settings.copy(stone)), ItemGroup.DECORATIONS);
+        Block smooth = RegistryUtil.createBlock(new Identifier(namespace, "smooth_" + name), new Block(AbstractBlock.Settings.copy(Blocks.SMOOTH_STONE)), ItemGroup.BUILDING_BLOCKS);
+        RegistryUtil.createBlock(new Identifier(namespace, "smooth_" + name + "_slab"), new SlabBlock(AbstractBlock.Settings.copy(smooth)), ItemGroup.BUILDING_BLOCKS);
+        RegistryUtil.createBlock(new Identifier(namespace, "smooth_" + name + "_stairs"), new StairsBlock(smooth.getDefaultState(), AbstractBlock.Settings.copy(smooth)), ItemGroup.BUILDING_BLOCKS);
+        RegistryUtil.createBlock(new Identifier(namespace, "smooth_" + name + "_wall"), new WallBlock(AbstractBlock.Settings.copy(smooth)), ItemGroup.DECORATIONS);
+
+        if (hasBricks) {
+            Block bricks = RegistryUtil.createBlock(new Identifier(namespace, name + "_bricks"), new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, name + "_brick_slab"), new SlabBlock(AbstractBlock.Settings.copy(bricks)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, name + "_brick_stairs"), new StairsBlock(bricks.getDefaultState(), AbstractBlock.Settings.copy(bricks)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, name + "_brick_wall"), new WallBlock(AbstractBlock.Settings.copy(bricks)), ItemGroup.DECORATIONS);
+            RegistryUtil.createBlock(new Identifier(namespace, "chiseled_" + name + "_bricks"), new Block(AbstractBlock.Settings.copy(bricks)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, "cracked_" + name + "_bricks"), new Block(AbstractBlock.Settings.copy(bricks)), ItemGroup.BUILDING_BLOCKS);
+        }
+
+        if (hasTiles) {
+            Block tiles = RegistryUtil.createBlock(new Identifier(namespace, name + "_tiles"), new Block(AbstractBlock.Settings.copy(Blocks.SMOOTH_STONE)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, name + "_tile_slab"), new SlabBlock(AbstractBlock.Settings.copy(tiles)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, name + "_tile_stairs"), new StairsBlock(tiles.getDefaultState(), AbstractBlock.Settings.copy(tiles)), ItemGroup.BUILDING_BLOCKS);
+            RegistryUtil.createBlock(new Identifier(namespace, name + "_tile_wall"), new WallBlock(AbstractBlock.Settings.copy(tiles)), ItemGroup.DECORATIONS);
+        }
     }
 
     public static EnumRecords.ArmorMaterial createArmorMaterial(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
