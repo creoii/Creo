@@ -7,3 +7,5 @@ accessible field net/minecraft/tag/ItemTags REQUIRED_TAGS Lnet/minecraft/tag/Req
 accessible field net/minecraft/tag/FluidTags REQUIRED_TAGS Lnet/minecraft/tag/RequiredTagList;
 accessible field net/minecraft/tag/EntityTypeTags REQUIRED_TAGS Lnet/minecraft/tag/RequiredTagList;
 accessible field net/minecraft/tag/GameEventTags REQUIRED_TAGS Lnet/minecraft/tag/RequiredTagList;
+
+accessible class net/minecraft/entity/passive/TropicalFishEntity$Variety

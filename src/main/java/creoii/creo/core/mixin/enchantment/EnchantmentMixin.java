@@ -12,16 +12,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EnchantmentMixin {
     @Inject(method = "isTreasure", at = @At("RETURN"), cancellable = true)
     private void creo$applyTreasures(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.TREASURE));
+        //if (!EnchantmentTags.TREASURE.values().isEmpty()) cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.TREASURE));
     }
 
     @Inject(method = "isCursed", at = @At("RETURN"), cancellable = true)
     private void creo$applyCurses(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.CURSED));
+        //if (!EnchantmentTags.CURSED.values().isEmpty()) cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.CURSED));
     }
 
     @Inject(method = "isAvailableForEnchantedBookOffer", at = @At("RETURN"), cancellable = true)
     private void creo$applyAvailableOffers(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.AVAILABLE_FOR_OFFERS));
+        //if (!EnchantmentTags.AVAILABLE_FOR_OFFERS.values().isEmpty()) cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.AVAILABLE_FOR_OFFERS));
     }
 }

@@ -12,4 +12,5 @@ public class ItemTags {
     public static final Tag<Item> CACTUS_IMMUNE = TagRegistry.item(new Identifier(Creo.MOD_ID, "cactus_immune"));
     public static final Tag<Item> UNFRAMEABLE = TagRegistry.item(new Identifier(Creo.MOD_ID, "unframeable"));
     public static final Tag<Item> SHEARS_SHEEP = TagRegistry.item(new Identifier(Creo.MOD_ID, "shears_sheep"));
+    public static final Tag<Item> GLINTED = TagRegistry.item(new Identifier(Creo.MOD_ID, "glinted"));
 }
