@@ -1,6 +1,5 @@
 package creoii.creo.core.mixin.util.enums;
 
-import creoii.creo.core.util.ExtendedEnum;
 import creoii.creo.core.util.data.EnumRecords;
 import net.minecraft.entity.passive.TropicalFishEntity;
 import org.spongepowered.asm.mixin.Final;
