@@ -26,11 +26,13 @@
     "item.ItemMixin",
     "tag.RequiredTagListRegistryMixin",
     "util.enums.ArmorMaterialsMixin",
+    "util.enums.BannerPatternMixin",
     "util.enums.BoatEntityTypeMixin",
     "util.enums.DyeColorMixin",
     "util.enums.EnchantmentRarityMixin",
     "util.enums.RarityMixin",
     "util.enums.ToolMaterialsMixin",
+    "util.enums.TropicalFishEntityVarietyMixin",
     "world.WorldMixin",
     "world.layer.AddEdgeBiomesLayerMixin"
   ],

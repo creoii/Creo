@@ -14,20 +14,18 @@ import java.util.Arrays;
 
 @Mixin(Rarity.class)
 public abstract class RarityMixin {
-    @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static Rarity[] field_8905;
-
-    @Invoker(value = "<init>", remap = false)
+    @Invoker("<init>")
     @SuppressWarnings("InvokerTarget")
-    private static Rarity init(String enumName, int ordinal, Formatting formatting) {
+    private static Rarity create(String enumName, int ordinal, Formatting formatting) {
         throw new AssertionError();
     }
 
-    static {
-        ArrayList<Rarity> values =  new ArrayList<>(Arrays.asList(field_8905));
-        Rarity last = values.get(values.size() - 1);
+    @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static Rarity[] field_8905;
 
+    static  {
+        ArrayList<Rarity> values =  new ArrayList<>(Arrays.asList(field_8905));
         EnumRecords.RARITIES.forEach((rarity) -> {
-            values.add(init(rarity.name().toUpperCase(), last.ordinal() + 1, rarity.formatting()));
+            values.add(create(rarity.name().toUpperCase(), values.size() + 1, rarity.formatting()));
         });
 
         field_8905 = values.toArray(new Rarity[0]);

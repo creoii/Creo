@@ -1,7 +1,9 @@
 package creoii.creo.core.util.data;
 
+import creoii.creo.core.mixin.util.enums.TropicalFishEntityVarietyMixin;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
+import net.minecraft.entity.passive.TropicalFishEntity;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Formatting;
@@ -18,6 +20,7 @@ public class EnumRecords {
     public static List<ToolMaterial> TOOL_MATERIALS = new ArrayList<>();
     public static List<ArmorMaterial> ARMOR_MATERIALS = new ArrayList<>();
     public static List<TropicalFishVariety> TROPICAL_FISH_VARIETIES = new ArrayList<>();
+    public static List<BannerPattern> BANNER_PATTERNS = new ArrayList<>();
 
     public static record DyeColor(int woolId, String name, int color, MapColor mapColor, int fireworkColor, int signColor) {}
     public static record BoatType(Block base, String name) {}
@@ -26,4 +29,5 @@ public class EnumRecords {
     public static record ToolMaterial(String name, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {}
     public static record ArmorMaterial(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {}
     public static record TropicalFishVariety(String name, int shape, int pattern) {}
+    public static record BannerPattern(String name, String id, boolean hasPatternItem) {}
 }

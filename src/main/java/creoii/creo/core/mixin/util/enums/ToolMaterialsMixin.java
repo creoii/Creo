@@ -1,6 +1,7 @@
 package creoii.creo.core.mixin.util.enums;
 
 import creoii.creo.core.util.data.EnumRecords;
+import net.minecraft.entity.passive.TropicalFishEntity;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import org.spongepowered.asm.mixin.Final;
@@ -15,20 +16,18 @@ import java.util.function.Supplier;
 
 @Mixin(ToolMaterials.class)
 public abstract class ToolMaterialsMixin {
-    @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static ToolMaterials[] field_8926;
-
-    @Invoker(value = "<init>", remap = false)
+    @Invoker("<init>")
     @SuppressWarnings("InvokerTarget")
-    private static ToolMaterials init(String enumName, int ordinal, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    private static ToolMaterials create(String enumName, int ordinal, int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         throw new AssertionError();
     }
 
-    static {
-        ArrayList<ToolMaterials> values =  new ArrayList<>(Arrays.asList(field_8926));
-        ToolMaterials last = values.get(values.size() - 1);
+    @Shadow @Final @Mutable @SuppressWarnings("ShadowTarget") private static ToolMaterials[] field_8926;
 
+    public void register() {
+        ArrayList<ToolMaterials> values =  new ArrayList<>(Arrays.asList(field_8926));
         EnumRecords.TOOL_MATERIALS.forEach((material) -> {
-            values.add(init(material.name().toUpperCase(), last.ordinal() + 1, material.miningLevel(), material.itemDurability(), material.miningSpeed(), material.attackDamage(), material.enchantability(), material.repairIngredient()));
+            values.add(create(material.name().toUpperCase(), values.size() + 1, material.miningLevel(), material.itemDurability(), material.miningSpeed(), material.attackDamage(), material.enchantability(), material.repairIngredient()));
         });
 
         field_8926 = values.toArray(new ToolMaterials[0]);
