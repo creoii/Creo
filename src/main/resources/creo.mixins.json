@@ -23,6 +23,7 @@
     "entity.PlayerEntityMixin",
     "entity.ProjectileEntityMixin",
     "entity.SheepEntityMixin",
+    "item.EndCrystalItemMixin",
     "item.ItemMixin",
     "tag.RequiredTagListRegistryMixin",
     "util.enums.ArmorMaterialsMixin",

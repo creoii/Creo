@@ -12,11 +12,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EnchantmentMixin {
     @Inject(method = "isTreasure", at = @At("HEAD"), cancellable = true)
     private void creo$applyTreasures(CallbackInfoReturnable<Boolean> cir) {
-        if (!EnchantmentTags.TREASURE.values().isEmpty()) cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.TREASURE));
+        cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.TREASURE));
     }
 
     //@Inject(method = "isCursed", at = @At("HEAD"), cancellable = true)
     private void creo$applyCurses(CallbackInfoReturnable<Boolean> cir) {
-        if (!EnchantmentTags.CURSED.values().isEmpty()) cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.CURSED));
+        cir.setReturnValue(EnchantmentUtil.isIn((Enchantment) (Object) this, EnchantmentTags.CURSED));
     }
 }
