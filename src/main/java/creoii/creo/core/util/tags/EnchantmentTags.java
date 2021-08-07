@@ -9,7 +9,6 @@ import net.minecraft.util.registry.Registry;
 
 public final class EnchantmentTags {
     public static RequiredTagList<Enchantment> REQUIRED_TAGS;
-    public static Tag.Identified<Enchantment> AVAILABLE_FOR_OFFERS;
     public static Tag.Identified<Enchantment> CURSED;
     public static Tag.Identified<Enchantment> TREASURE;
 
@@ -23,7 +22,6 @@ public final class EnchantmentTags {
 
     static {
         REQUIRED_TAGS = RequiredTagListRegistry.register(Registry.ENCHANTMENT_KEY, "tags/enchantments");
-        AVAILABLE_FOR_OFFERS = enchantment("available_for_offers");
         CURSED = enchantment("cursed");
         TREASURE = enchantment("treasure");
     }
