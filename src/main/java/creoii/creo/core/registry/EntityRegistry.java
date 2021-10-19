@@ -4,7 +4,7 @@ import creoii.creo.common.entity.BoatEntity;
 import creoii.creo.core.Creo;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.entity.EntityDimensions;
@@ -22,6 +22,6 @@ public class EntityRegistry {
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
-        EntityRendererRegistry.INSTANCE.register(BOAT, BoatEntityRenderer::new);
+        EntityRendererRegistry.register(BOAT, BoatEntityRenderer::new);
     }
 }

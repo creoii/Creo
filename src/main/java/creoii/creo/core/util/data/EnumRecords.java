@@ -1,9 +1,7 @@
 package creoii.creo.core.util.data;
 
-import creoii.creo.core.mixin.util.enums.TropicalFishEntityVarietyMixin;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
-import net.minecraft.entity.passive.TropicalFishEntity;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Formatting;

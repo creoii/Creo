@@ -24,10 +24,10 @@ public class WorldGenUtil {
         }
     }
 
-    public static List<BlockPos> getTopPositions(World world, int x, int z) {
+    public static List<BlockPos> getTopPositions(World world, int x, int z, boolean includeWater) {
         List<BlockPos> positions = ImmutableList.of();
-        BlockPos.Mutable mutable = new BlockPos(x, 0, z).mutableCopy();
-        for (int y = 0; y <= world.getHeight(); ++y) {
+        BlockPos.Mutable mutable = new BlockPos(x, -64, z).mutableCopy();
+        for (int y = -64; y <= world.getHeight(); ++y) {
             mutable.setY(y);
             if (world.getBlockState(mutable.up()).isAir() || (world.getBlockState(mutable.up()).isOf(Blocks.WATER) && !world.getBlockState(mutable).isOf(Blocks.WATER))) {
                 positions.add(mutable);
@@ -39,9 +39,5 @@ public class WorldGenUtil {
 
     public static Biome getBiomeFromKey(RegistryKey<Biome> key) {
         return BuiltinRegistries.BIOME.get(key);
-    }
-
-    public static void addFeatureToBiome(Biome biome, GenerationStep.Feature featureStep, ConfiguredFeature<?, ?> feature) {
-        biome.getGenerationSettings().getFeatures().get(featureStep.ordinal()).add(() -> feature);
     }
 }

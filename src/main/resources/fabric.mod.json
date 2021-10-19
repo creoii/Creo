@@ -30,9 +30,9 @@
     "creo.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.3",
-    "fabric": "*",
-    "minecraft": "1.17.x",
+    "fabricloader": ">=0.12.0",
+    "fabric": ">=0.36.1",
+    "minecraft": "1.18-alpha.21.41.a",
     "java": ">=16"
   }
 }

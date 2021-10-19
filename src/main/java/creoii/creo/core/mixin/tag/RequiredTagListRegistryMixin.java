@@ -15,6 +15,6 @@ import java.util.Set;
 public class RequiredTagListRegistryMixin {
     @Inject(method = "getBuiltinTags", at = @At("RETURN"), cancellable = true)
     private static void creo$addBiomeTagList(CallbackInfoReturnable<Set<RequiredTagList<?>>> cir) {
-        cir.setReturnValue(ImmutableSet.of(BlockTags.REQUIRED_TAGS, ItemTags.REQUIRED_TAGS, FluidTags.REQUIRED_TAGS, EntityTypeTags.REQUIRED_TAGS, GameEventTags.REQUIRED_TAGS, BiomeTags.REQUIRED_TAGS, EnchantmentTags.REQUIRED_TAGS));
+        cir.setReturnValue(ImmutableSet.of(BlockTags.REQUIRED_TAGS, ItemTags.REQUIRED_TAGS, FluidTags.REQUIRED_TAGS, EntityTypeTags.REQUIRED_TAGS, GameEventTags.REQUIRED_TAGS, EnchantmentTags.REQUIRED_TAGS));
     }
 }

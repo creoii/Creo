@@ -34,8 +34,8 @@
     "util.enums.RarityMixin",
     "util.enums.ToolMaterialsMixin",
     "util.enums.TropicalFishEntityVarietyMixin",
-    "world.WorldMixin",
-    "world.layer.AddEdgeBiomesLayerMixin"
+    "world.TreeDecoratorTypeMixin",
+    "world.WorldMixin"
   ],
   "client": [
     "client.interaction.ClientPlayerInteractionManagerMixin"

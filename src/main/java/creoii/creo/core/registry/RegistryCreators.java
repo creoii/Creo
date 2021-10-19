@@ -45,7 +45,7 @@ public class RegistryCreators {
         Registry.register(Registry.ITEM, new Identifier(namespace, name + "_boat"), new BoatItem(createBoat(new BoatEntity.Boat(new Identifier(namespace, name), planks, null)), new Item.Settings().maxCount(1).group(ItemGroup.TRANSPORTATION)));
     }
 
-    public static void createStone(String namespace, String name, boolean hasBricks, boolean hasTiles) {
+    public static void createStone(String namespace, String name, boolean hasBricks, boolean hasTiles, boolean hasMossy) {
         Block stone = RegistryUtil.createBlock(new Identifier(namespace, name), new Block(AbstractBlock.Settings.copy(Blocks.STONE)), ItemGroup.BUILDING_BLOCKS);
         RegistryUtil.createBlock(new Identifier(namespace, name + "_slab"), new SlabBlock(AbstractBlock.Settings.copy(stone)), ItemGroup.BUILDING_BLOCKS);
         RegistryUtil.createBlock(new Identifier(namespace, name + "_stairs"), new StairsBlock(stone.getDefaultState(), AbstractBlock.Settings.copy(stone)), ItemGroup.BUILDING_BLOCKS);
@@ -62,6 +62,13 @@ public class RegistryCreators {
             RegistryUtil.createBlock(new Identifier(namespace, name + "_brick_wall"), new WallBlock(AbstractBlock.Settings.copy(bricks)), ItemGroup.DECORATIONS);
             RegistryUtil.createBlock(new Identifier(namespace, "chiseled_" + name + "_bricks"), new Block(AbstractBlock.Settings.copy(bricks)), ItemGroup.BUILDING_BLOCKS);
             RegistryUtil.createBlock(new Identifier(namespace, "cracked_" + name + "_bricks"), new Block(AbstractBlock.Settings.copy(bricks)), ItemGroup.BUILDING_BLOCKS);
+
+            if (hasMossy) {
+                Block mossyBricks = RegistryUtil.createBlock(new Identifier(namespace, "mossy_" + name + "_bricks"), new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+                RegistryUtil.createBlock(new Identifier(namespace, "mossy_" + name + "_brick_slab"), new SlabBlock(AbstractBlock.Settings.copy(mossyBricks)), ItemGroup.BUILDING_BLOCKS);
+                RegistryUtil.createBlock(new Identifier(namespace, "mossy_" + name + "_brick_stairs"), new StairsBlock(mossyBricks.getDefaultState(), AbstractBlock.Settings.copy(mossyBricks)), ItemGroup.BUILDING_BLOCKS);
+                RegistryUtil.createBlock(new Identifier(namespace, "mossy_" + name + "_brick_wall"), new WallBlock(AbstractBlock.Settings.copy(mossyBricks)), ItemGroup.DECORATIONS);
+            }
         }
 
         if (hasTiles) {
